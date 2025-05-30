@@ -23,8 +23,14 @@
       padding: 20px 30px;
       background-color: white;
       border-bottom: 1px solid #ddd;
-      position: relative;
-      z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     nav ul {
@@ -46,7 +52,9 @@
     }
 
     .banner-container {
-      margin: 10px;
+      margin: 0;
+      padding: 0;
+      width: 100%;
     }
 
     .banner {
@@ -54,7 +62,8 @@
       width: 100%;
       height: 80vh;
       overflow: hidden;
-      border-radius: 10px;
+      margin: 0;
+      padding: 0;
     }
 
     .banner video {
@@ -62,7 +71,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 10px;
+      margin: 0;
+      padding: 0;
     }
 
     .overlay-text {
@@ -71,11 +81,51 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
-      font-size: 48px;
-      font-weight: bold;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      font-size: 64px;
+      font-weight: 900;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.98),
+                   0 4px 12px rgba(0, 0, 0, 0.95),
+                   0 8px 24px rgba(0, 0, 0, 0.9),
+                   0 12px 36px rgba(0, 0, 0, 0.85),
+                   0 16px 48px rgba(0, 0, 0, 0.8),
+                   0 20px 60px rgba(0, 0, 0, 0.75),
+                   0 24px 72px rgba(0, 0, 0, 0.7);
       z-index: 5;
       text-align: center;
+      letter-spacing: 2px;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .banner {
+        height: 60vh;
+      }
+
+      .overlay-text {
+        font-size: 48px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .banner {
+        height: 50vh;
+      }
+
+      .overlay-text {
+        font-size: 36px;
+      }
+
+      nav {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
     }
 
     .banner::after {
@@ -83,31 +133,745 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.3);
       z-index: 1;
+    }
+
+    .section {
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .download-btn {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #005999;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .dataset-info {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      text-align: left;
+    }
+
+    .dataset-info h3 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .dataset-features {
+      margin-top: 30px;
+    }
+
+    .dataset-features h4 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .dataset-features ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .dataset-features li {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .dataset-features li:before {
+      content: "•";
+      color: #007acc;
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .dataset-info {
+        padding: 0 20px;
+      }
+      
+      .dataset-info h3 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .devices-container {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .device-section {
+      text-align: center;
+    }
+
+    .device-section h3 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .device-card {
+      background: #f8f8f8;
       border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .device-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .device-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .device-card img[alt="Meta Quest 3"] {
+      height: 180px;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .device-card img[alt="iPhone Pro"] {
+      height: 200px;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .device-card h4 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .device-card p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    @media screen and (max-width: 768px) {
+      .device-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+
+      .device-section h3 {
+        font-size: 1.5rem;
+      }
+
+      .device-card {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    .guide-section {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: #f8f8f8;
+      border-radius: 10px;
+    }
+
+    .guide-section h3 {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .guide-steps {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .guide-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .step-number {
+      background: #007acc;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex-grow: 1;
+    }
+
+    .step-content h4 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .step-content p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    @media screen and (max-width: 768px) {
+      .guide-section {
+        padding: 30px 15px;
+      }
+
+      .guide-section h3 {
+        font-size: 1.8rem;
+      }
+
+      .step-content h4 {
+        font-size: 1.2rem;
+      }
+
+      .step-content p {
+        font-size: 1rem;
+      }
+    }
+
+    .dl-button {
+      --duration: 4000;
+      --success: #16BF78;
+      --grey-light: #99A3BA;
+      --grey: #6C7486;
+      --grey-dark: #3F4656;
+      --light: #CDD9ED;
+      --shadow: rgba(18, 22, 33, .6);
+      --shadow-dark: rgba(18, 22, 33, .85);
+      display: block;
+      text-decoration: none;
+      perspective: 500px;
+      margin: 0 auto;
+      max-width: 300px;
+    }
+
+    .dl-button > div {
+      position: relative;
+      background: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      padding: 16px 24px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .dl-button > div .icon {
+      --color: var(--grey);
+      margin-right: 12px;
+      position: relative;
+      transform: translateZ(8px);
+    }
+
+    .dl-button > div .icon div {
+      overflow: hidden;
+      position: relative;
+      width: 20px;
+      height: 22px;
+    }
+
+    .dl-button > div .icon div:before,
+    .dl-button > div .icon div:after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      top: 2px;
+      transition: opacity 0.3s ease;
+    }
+
+    .dl-button > div .icon div:before {
+      left: 6px;
+      background-image: radial-gradient(circle at 0 100%, var(--color) 2px, #fff 0px);
+    }
+
+    .dl-button > div .icon div:after {
+      right: 6px;
+      background-image: radial-gradient(circle at 100% 100%, var(--color) 2px, #fff 0px);
+    }
+
+    .dl-button > div .icon div svg {
+      width: 20px;
+      height: 18px;
+      display: block;
+      margin-top: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dl-button > div .icon div svg.arrow {
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      transform: translateY(-1px);
+    }
+
+    .dl-button > div .icon div svg.shape {
+      color: var(--color);
+      transition: color 0.4s ease;
+    }
+
+    .dl-button > div .icon span {
+      --s: 1;
+      position: absolute;
+      left: 1px;
+      right: 1px;
+      bottom: 2px;
+      background: var(--color);
+      height: 6px;
+      border-radius: 50%;
+      display: block;
+      transform: translateY(0) scale(var(--s));
+    }
+
+    .dl-button > div .label {
+      --color: var(--grey-dark);
+      line-height: 22px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color);
+      position: relative;
+      transition: color 0.4s ease;
+      transform: translateZ(8px);
+    }
+
+    .dl-button > div .label > div {
+      display: flex;
+      transition: opacity 0.25s ease;
+    }
+
+    .dl-button > div .label > div:not(.show) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    .dl-button > div .label > div.hide {
+      opacity: 0;
+    }
+
+    .dl-button > div .progress {
+      --s: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      transform-origin: 50% 100%;
+      transform: scaleY(var(--s));
+      transition: transform 0.4s ease;
+    }
+
+    .dl-button > div .progress:before,
+    .dl-button > div .progress:after {
+      --s: 1;
+      content: "";
+      background: var(--success);
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      transform-origin: 0 50%;
+      transform: scaleX(var(--s));
+    }
+
+    .dl-button > div .progress:before {
+      opacity: 0.35;
+    }
+
+    .dl-button > div .progress:after {
+      --s: 0;
+      transition: transform calc(var(--duration) * .9ms) ease-in-out;
+    }
+
+    .dl-button.active > div {
+      animation: button calc(var(--duration) * 1ms) linear forwards;
+    }
+
+    .dl-button.active > div .icon div:before,
+    .dl-button.active > div .icon div:after {
+      opacity: 0;
+      transition-delay: 0.4s;
+    }
+
+    .dl-button.active > div .icon svg.arrow {
+      animation: arrow calc(var(--duration) * .18ms) linear 4 calc(var(--duration) * .2ms);
+    }
+
+    .dl-button.active > div .icon span {
+      animation: span calc(var(--duration) * .18ms) linear 4 calc(var(--duration) * .2ms);
+    }
+
+    .dl-button.active > div .progress {
+      --s: 1;
+      transition-delay: 0.4s;
+    }
+
+    .dl-button.active > div .progress:after {
+      --s: 1;
+      transition-delay: 0.4s;
+    }
+
+    .dl-button.done > div .icon {
+      --color: var(--success);
+    }
+
+    .dl-button.done .label {
+      --color: var(--success);
+    }
+
+    @keyframes button {
+      0% {
+        transform: translateZ(0);
+      }
+      4% {
+        transform: translateZ(0) scale(0.98);
+      }
+      8% {
+        transform: translateZ(0) scale(0.98);
+      }
+      12% {
+        transform: translateZ(0) scale(1);
+      }
+      16% {
+        transform: translateZ(0) scale(0.98);
+      }
+      20% {
+        transform: translateZ(0) scale(0.98);
+      }
+      24% {
+        transform: translateZ(0) scale(1);
+      }
+      28% {
+        transform: translateZ(0) scale(0.98);
+      }
+      32% {
+        transform: translateZ(0) scale(0.98);
+      }
+      36% {
+        transform: translateZ(0) scale(1);
+      }
+      40% {
+        transform: translateZ(0) scale(0.98);
+      }
+      44% {
+        transform: translateZ(0) scale(0.98);
+      }
+      48% {
+        transform: translateZ(0) scale(1);
+      }
+      52% {
+        transform: translateZ(0) scale(0.98);
+      }
+      56% {
+        transform: translateZ(0) scale(0.98);
+      }
+      60% {
+        transform: translateZ(0) scale(1);
+      }
+      64% {
+        transform: translateZ(0) scale(0.98);
+      }
+      68% {
+        transform: translateZ(0) scale(0.98);
+      }
+      72% {
+        transform: translateZ(0) scale(1);
+      }
+      76% {
+        transform: translateZ(0) scale(0.98);
+      }
+      80% {
+        transform: translateZ(0) scale(0.98);
+      }
+      84% {
+        transform: translateZ(0) scale(1);
+      }
+      88% {
+        transform: translateZ(0) scale(0.98);
+      }
+      92% {
+        transform: translateZ(0) scale(0.98);
+      }
+      96% {
+        transform: translateZ(0) scale(1);
+      }
+      100% {
+        transform: translateZ(0) scale(1);
+      }
+    }
+
+    @keyframes arrow {
+      38% {
+        transform: translateY(100%);
+        opacity: 1;
+      }
+      39% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+    }
+
+    @keyframes span {
+      38% {
+        transform: translateY(0) scale(1);
+      }
+      39% {
+        transform: translateY(0) scale(0);
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation Menu -->
   <nav>
     <ul>
-      <li><a href="#svd">SVD</a></li>
+      <li><a href="#">SVD</a></li>
       <li><a href="#download">Download</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
+  <!-- Video Banner Section -->
   <div class="banner-container">
     <div class="banner">
-      <video autoplay muted loop>
-        <source src="final_grid.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline poster="preview.jpg">
+        <source src="asset/final_grid.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="overlay-text">SVD: Spatial Video Dataset</div>
     </div>
   </div>
+
+  <!-- Download Section -->
+  <section id="download" class="section">
+    <div class="section-content">
+      <h2>Download</h2>
+      <div class="dataset-info">
+        <h3>SVD: Spatial Video Dataset</h3>
+        <p>A comprehensive collection of spatial video data designed for research and development in computer vision and spatial computing. Our dataset provides high-quality spatial video recordings that enable researchers to explore and develop new algorithms for spatial computing applications.</p>
+        <div class="dataset-features">
+          <h4>Key Features:</h4>
+          <ul>
+            <li>High-resolution spatial video recordings</li>
+            <li>Multiple camera angles and perspectives</li>
+            <li>Rich metadata and annotations</li>
+            <li>Comprehensive documentation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="download-options">
+        <a class="dl-button" href="#" target="_blank">
+          <div>
+            <div class="icon">
+              <div>
+                <svg class="arrow" viewBox="0 0 20 18" fill="currentColor">
+                  <polygon points="8 0 12 0 12 9 15 9 10 14 5 9 8 9"></polygon>
+                </svg>
+                <svg class="shape" viewBox="0 0 20 18" fill="currentColor">
+                  <path d="M4.82668561,0 L15.1733144,0 C16.0590479,0 16.8392841,0.582583769 17.0909106,1.43182334 L19.7391982,10.369794 C19.9108349,10.9490677 19.9490212,11.5596963 19.8508905,12.1558403 L19.1646343,16.3248465 C19.0055906,17.2910371 18.1703851,18 17.191192,18 L2.80880804,18 C1.82961488,18 0.994409401,17.2910371 0.835365676,16.3248465 L0.149109507,12.1558403 C0.0509788145,11.5596963 0.0891651114,10.9490677 0.260801785,10.369794 L2.90908938,1.43182334 C3.16071592,0.582583769 3.94095214,0 4.82668561,0 Z"></path>
+                </svg>
+              </div><span></span>
+            </div>
+            <div class="label">
+              <div class="show default">Download Dataset</div>
+              <div class="state">
+                <div class="counter">
+                  <ul>
+                    <li></li>
+                    <li>1</li>
+                  </ul>
+                  <ul>
+                    <li>0</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>0</li>
+                  </ul>
+                  <ul>
+                    <li>0</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>0</li>
+                  </ul>
+                  <span>%</span>
+                </div>
+                <span>Done</span>
+              </div>
+            </div>
+            <div class="progress"></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="devices-container">
+        <div class="device-section">
+          <h3>Recording Devices</h3>
+          <div class="device-grid">
+            <div class="device-card">
+              <img src="asset/apple_vision.webp" alt="Apple Vision Pro" class="device-image">
+              <h4>Apple Vision Pro</h4>
+              <p>Primary recording device for spatial video capture</p>
+            </div>
+            <div class="device-card">
+              <img src="asset/iphone.png" alt="iPhone Pro" class="device-image">
+              <h4>iPhone 16 Pro</h4>
+              <p>Secondary recording device for spatial video capture</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="device-section">
+          <h3>Playback Devices</h3>
+          <div class="device-grid">
+            <div class="device-card">
+              <img src="asset/apple_vision.webp" alt="Apple Vision Pro" class="device-image">
+              <h4>Apple Vision Pro</h4>
+              <p>Immersive spatial video playback experience</p>
+            </div>
+            <div class="device-card">
+              <img src="asset/quest.png" alt="Meta Quest 3" class="device-image">
+              <h4>Meta Quest 3</h4>
+              <p>Compatible VR headset for spatial video viewing</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-section">
+          <h3>How to Cite Our Dataset</h3>
+          <div class="guide-steps">
+            <div class="guide-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Download the Dataset</h4>
+                <p>Click the download button above to get access to our spatial video dataset. The files will be in a compatible format for spatial video playback.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="section-content">
+      <h2>Contact</h2>
+      <p>Get in touch with us for any questions or collaborations.</p>
+      <div class="contact-info">
+        <p>Email: Hadi.Amirpour@aau.at</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    document.querySelector('.dl-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.add('active');
+      setTimeout(() => {
+        this.classList.add('done');
+      }, 4000);
+    });
+  </script>
 
 </body>
 </html>
